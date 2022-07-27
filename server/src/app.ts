@@ -1,14 +1,20 @@
 import express from "express"
 import config from "config"
+import cors from "cors"
+import log from './utils';
+import dotenv from "dotenv";
+import usersRouter from "./routes/users.routes"
 
-require('dotenv').config()
 
-
+dotenv.config()
+const port = config.get<number>("port");
 const app = express()
-const port = config.get('port')
+
+app.use(cors())
+app.use(express.json());
+app.use('/', usersRouter)
 
 
-app.listen(port, () => {
-  console.log(`App ${port}`);
-  
+app.listen(port, async () => {
+  log.info(`App ${port}`);
 })
