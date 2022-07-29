@@ -9,7 +9,7 @@ import SignUp from '../components/SignUp';
 import Paper from '@mui/material/Paper'
 
 
-const paperStyle={maxWidth: 500, width:"100%",margin:"60px auto 40px auto", borderRadius: "25px"}
+const paperStyle={maxWidth: 500, width:"100%",margin:"0px auto 40px auto", borderRadius: "25px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}
 
 function LoginRegister() {
   const [value, setValue] = React.useState('1');
@@ -19,22 +19,24 @@ function LoginRegister() {
   };
 
   return (
-    <Paper elevation={25} style={paperStyle}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={change} aria-label="lab API tabs example" style={{justifyContent: "center"}}>
-            <Tab style={{width: "50%", fontWeight: "bold"}} label="Login" value="1" />
-            <Tab style={{width: "50%", fontWeight: "bold"}} label="Register" value="3" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
-          <Login change={change}/>
-        </TabPanel>
-        <TabPanel value="3">
-          <SignUp change={change}/>
-        </TabPanel>
-      </TabContext>
-    </Paper>
+    <div style={{padding: "30px 0"}}>
+      <Paper elevation={25} style={paperStyle}>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList onChange={change} aria-label="lab API tabs example" style={{justifyContent: "center"}}>
+              <Tab style={{width: "50%", fontWeight: "bold"}} label="Login" value="1" />
+              <Tab style={{width: "50%", fontWeight: "bold"}} label="Register" value="3" />
+            </TabList>
+          </Box>
+          <TabPanel value="1">
+            <Login change={change}/>
+          </TabPanel>
+          <TabPanel value="3">
+            <SignUp change={change}/>
+          </TabPanel>
+        </TabContext>
+      </Paper>
+    </div>
   );
 }
 
