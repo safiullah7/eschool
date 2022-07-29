@@ -3,7 +3,7 @@ import './App.css';
 import CustomRoutes from './routes/CustomRoutes';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import DarkMode from './components/DarkMode';
+import DarkMode from './components/DarkMode/DarkMode';
 
 
 

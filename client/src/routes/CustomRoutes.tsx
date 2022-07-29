@@ -1,12 +1,12 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import LoginRegister from '../pages/LoginRegister';
+import UserForm from '../pages/Form/UserForm';
 
 function CustomRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginRegister />} />
+        <Route path="/" element={<UserForm />} />
       </Routes>
     </>
   )

@@ -15,10 +15,11 @@ interface State {
 
 interface Props {
   passwordLabel: string
+  id: string
 }
 
 
-function PasswordInput({passwordLabel}:Props) {
+function PasswordInput({passwordLabel, id}:Props) {
   const [values, setValues] = React.useState<State>({
     password: '',
     showPassword: false
@@ -44,7 +45,7 @@ function PasswordInput({passwordLabel}:Props) {
     <FormControl  variant="outlined" fullWidth style={{margin: "30px 0 5px 0"}} size="small">
       <InputLabel htmlFor="outlined-adornment-password" size="small" required>{passwordLabel}</InputLabel>
       <OutlinedInput
-        id="outlined-adornment-password"
+        id={id}
         type={values.showPassword ? 'text' : 'password'}
         value={values.password}
         onChange={handleChange('password')}
