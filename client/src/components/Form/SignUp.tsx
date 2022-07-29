@@ -7,7 +7,7 @@ import HelperLink from './HelperLink';
 function SignUp({change}:any) {
   return (
     <form>
-      <TitleForm title='Sign In' />
+      <TitleForm title='Create Your Account' />
       <TextField label="Email"  fullWidth required size="small"/>
       <PasswordInput passwordLabel='Password' id="password"/>
       <p style={{marginTop: "-5px"}}></p>

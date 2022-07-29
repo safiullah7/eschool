@@ -7,7 +7,6 @@ import HelperLink from './HelperLink';
 
 
 function Login({change}:any) {
-
   return (
     <form>
       <TitleForm title='Sign In' />
