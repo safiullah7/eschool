@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import PasswordInput from './PasswordInput';
 import TitleForm from './TitleForm';
 import HelperLink from './HelperLink';
-import { Formik, FormikErrors } from 'formik';
+import { Formik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
@@ -34,7 +34,7 @@ function SignUp({change}:any) {
 
   return (
     <>
-      <Formik initialValues={{ email: '', password: '', repeatPassword: ''}} 
+      <Formik<Values> initialValues={{ email: '', password: '', repeatPassword: ''}} 
         validationSchema={SignUpSchema}
         onSubmit={( values ) => {
         alert(JSON.stringify(values))
@@ -50,7 +50,7 @@ function SignUp({change}:any) {
           <PasswordInput name="repeatPassword" label="Repeat Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.repeatPassword} />
           <p className="red">{errors.repeatPassword && touched.repeatPassword && errors.repeatPassword}</p>
           <p style={{marginTop: "-5px"}}></p>
-          <button className='button' style={{margin: "40px 0 50px 0"}} type="submit">Create Account</button>
+          <button className='button' onClick={notify} style={{margin: "40px 0 50px 0"}} type="submit">Create Account</button>
           <ToastContainer />
           <HelperLink change={change} text="Have an account?" linkText="Log in" tabNum="1" />
         </form>)}

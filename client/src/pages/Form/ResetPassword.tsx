@@ -1,6 +1,5 @@
 import React from 'react'
 import BoxForm from '../../components/Form/BoxForm'
-import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import TitleForm from '../../components/Form/TitleForm';
 import PasswordInput from '../../components/Form/PasswordInput';
