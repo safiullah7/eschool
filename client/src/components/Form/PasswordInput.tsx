@@ -1,70 +1,39 @@
-import * as React from 'react';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
+import React from 'react';
+
+
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
-
-interface State {
-  password: string;
-  showPassword: boolean;
-}
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 
 interface Props {
-  passwordLabel: string
-  id: string
+  name: string
+  handleChange: any
+  label: string
+  type: any
+  handleShowPassword: any
 }
 
-
-function PasswordInput({passwordLabel, id}:Props) {
-  const [values, setValues] = React.useState<State>({
-    password: '',
-    showPassword: false
-  });
-
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
-  return (
-    <FormControl  variant="outlined" fullWidth style={{margin: "30px 0 5px 0"}} size="small">
-      <InputLabel htmlFor="outlined-adornment-password" size="small" required>{passwordLabel}</InputLabel>
-      <OutlinedInput
-        id={id}
-        type={values.showPassword ? 'text' : 'password'}
-        value={values.password}
-        onChange={handleChange('password')}
-        endAdornment={
+const PasswordInput = ({ name, handleChange, label, type, handleShowPassword }:Props) => (
+    <TextField
+      sx={{margin: "30px 0 5px 0"}} size="small"
+      name={name}
+      onChange={handleChange}
+      variant="outlined"
+      required
+      fullWidth
+      label={label}
+      type={type}
+      InputProps={name === 'password' || 'repeatPassword' ? {
+        endAdornment: (
           <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              {values.showPassword ? <VisibilityOff /> : <Visibility />}
+            <IconButton onClick={handleShowPassword}>
+              {type === 'password' ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
-        }
-        label={passwordLabel}
-      />
-    </FormControl>
-  )
-}
+        ),
+      } : undefined}
+    />
 
-export default PasswordInput
+);
+
+export default PasswordInput;
