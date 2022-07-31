@@ -11,16 +11,17 @@ interface Props {
   label: string
   type: any
   handleShowPassword: any
+  value: any
 }
 
-const PasswordInput = ({ name, handleChange, label, type, handleShowPassword }:Props) => (
+const PasswordInput = ({ name, handleChange, label, type, handleShowPassword, value }:Props) => (
     <TextField
       sx={{margin: "30px 0 5px 0"}} size="small"
       name={name}
       onChange={handleChange}
       variant="outlined"
-      required
       fullWidth
+      value={value}
       label={label}
       type={type}
       InputProps={name === 'password' || 'repeatPassword' ? {
