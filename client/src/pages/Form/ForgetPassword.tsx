@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import TitleForm from '../../components/Form/TitleForm';
 import Wrapper from '../../components/Form/Wrapper';
 import { TextField, Typography } from '@mui/material';
+import { useTranslation } from "react-i18next";
 import * as Yup from 'yup';
 
 
@@ -10,11 +11,13 @@ interface Values {
   email: string
 }
 
-const ForgetSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-});
 
 function ForgetPassword() {
+  const { t } = useTranslation(["Reset"]);
+
+  const ForgetSchema = Yup.object().shape({
+    email: Yup.string().email(t("invalid")).required(t("required")),
+  });
 
   return (
     <Wrapper>
@@ -26,11 +29,11 @@ function ForgetPassword() {
           }}>
           {({handleSubmit, errors, touched, values, handleChange}) => (
           <form onSubmit={handleSubmit} style={{paddingTop: "30px"}}>
-            <TitleForm title='New Password' />
-            <Typography>We will send you an email that will allow you to recover your password.</Typography>
-            <TextField sx={{marginTop: "30px"}} label="Email"  fullWidth size="small" name="email" onChange={handleChange} value={values.email} />
+            <TitleForm title={t("forgetTitle")} />
+            <Typography>{t("forgetSubTitle")}</Typography>
+            <TextField sx={{marginTop: "30px"}} label={t("email")}  fullWidth size="small" name="email" onChange={handleChange} value={values.email} />
             <p className="red">{errors.email && touched.email && errors.email}</p>
-            <button type="submit" className='button'>Send Email</button>
+            <button type="submit" className='button'>{t("sendEmail")}</button>
           </form>)}
         </Formik>
       </BoxForm>

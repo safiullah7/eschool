@@ -38,11 +38,11 @@ function Login({change}:any) {
           <TitleForm title={t("title")} />
           <TextField label={t("email")} fullWidth size="small" name="email" onChange={handleChange} value={values.email} />
           <p className="red">{errors.email && touched.email && errors.email}</p>
-          <PasswordInput name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.password}/>
+          <PasswordInput name="password" label={t("password")} handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.password}/>
           <p className="red">{errors.password && touched.password && errors.password}</p>
-          <Link to="/forget"><p style={{textAlign: "right", color: "#7A7A7A", fontSize: "14px", paddingTop: "5px"}}>Forgot password ?</p></Link>
-          <button type="submit" className='button'>Log In</button>
-          <HelperLink change={change} text="Don't have an account?" linkText="Sign up" tabNum="2" />
+          <Link to="/forget"><p style={{textAlign: "right", color: "#7A7A7A", fontSize: "14px", paddingTop: "5px"}}>{t("forget")}</p></Link>
+          <button type="submit" className='button'>{t("login")}</button>
+          <HelperLink change={change} text={t("notAccount")} linkText={t("signUp")} tabNum="2" />
         </form>)}
       </Formik>
     </>

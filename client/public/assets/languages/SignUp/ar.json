@@ -1,0 +1,15 @@
+{
+	"title":"2Create Your Account",
+	"email":"2Email",
+	"password":"2Password",
+	"tooShort":"2Too Short!",
+	"tooLong":"2Too Long!",
+	"required":"2Required",
+	"invalid":"2Invalid email",
+	"notAccount":"2Don't have an account?",
+	"login": "2Log In",
+	"notMatch":"2Passwords must match",
+	"repeatPassword":"2Repeat Password",
+	"createAccount":"2Create Account",
+	"haveAccount":"2Have an account?"
+}

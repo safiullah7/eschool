@@ -1,0 +1,15 @@
+{
+	"title":"2Sign In",
+	"email":"2Email",
+	"password":"2Password",
+	"tooShort":"2Too Short!",
+	"tooLong":"2Too Long!",
+	"required":"2Required",
+	"invalid":"2Invalid email",
+	"notAccount":"2Don't have an account?",
+	"signUp":"2Sign up",
+	"forget":"2Forgot password ?",
+	"login": "2Log In",
+	"tabTitle":"2Login",
+	"tabRegister":"2Register"
+}

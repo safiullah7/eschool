@@ -6,6 +6,7 @@ import HelperLink from './HelperLink';
 import { Formik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next";
 import * as Yup from 'yup';
 
 
@@ -15,22 +16,24 @@ interface Values {
   repeatPassword: string;
 }
 
-const SignUpSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string()
-  .min(7, 'Too Short!')
-  .max(50, 'Too Long!')
-  .required('Required'),
-  repeatPassword: Yup.string()
-    .required('Required')
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-});
 
 
 function SignUp({change}:any) {
+  const { t } = useTranslation(["SignUp"]);
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
   const notify = () => toast("We have sent you an email that will allow you to verify your account! Check your account!", {position: 'top-center'});
+
+  const SignUpSchema = Yup.object().shape({
+    email: Yup.string().email(t("invalid")).required(t("required")),
+    password: Yup.string()
+    .min(7, t("tooShort"))
+    .max(50, t("tooLong"))
+    .required(t("required")),
+    repeatPassword: Yup.string()
+      .required(t("required"))
+      .oneOf([Yup.ref('password'), null], t("Passwords must match"))
+  });
 
   return (
     <>
@@ -42,17 +45,17 @@ function SignUp({change}:any) {
       >
         {({handleSubmit, values, errors, touched, handleChange}) => (
         <form onSubmit={handleSubmit}>
-          <TitleForm title='Create Your Account' />
-          <TextField label="Email" fullWidth size="small" name="email" onChange={handleChange} value={values.email}/>
+          <TitleForm title={t("title")} />
+          <TextField label={t("email")} fullWidth size="small" name="email" onChange={handleChange} value={values.email}/>
           <p className="red">{errors.email && touched.email && errors.email}</p>
-          <PasswordInput name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.password} />
+          <PasswordInput name="password" label={t("password")} handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.password} />
           <p className="red">{errors.password && touched.password && errors.password}</p>
-          <PasswordInput name="repeatPassword" label="Repeat Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.repeatPassword} />
+          <PasswordInput name="repeatPassword" label={t("repeatPassword")} handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} value={values.repeatPassword} />
           <p className="red">{errors.repeatPassword && touched.repeatPassword && errors.repeatPassword}</p>
           <p style={{marginTop: "-5px"}}></p>
-          <button className='button' onClick={notify} style={{margin: "40px 0 50px 0"}} type="submit">Create Account</button>
+          <button className='button' onClick={notify} style={{margin: "40px 0 50px 0"}} type="submit">{t("createAccount")}</button>
           <ToastContainer />
-          <HelperLink change={change} text="Have an account?" linkText="Log in" tabNum="1" />
+          <HelperLink change={change} text={t("haveAccount")} linkText={t("login")} tabNum="1" />
         </form>)}
       </Formik>
     </>

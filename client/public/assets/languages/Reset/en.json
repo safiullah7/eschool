@@ -1,0 +1,18 @@
+{
+	"title":"Reset Password",
+	"subTitle":"You can create new password below fields.",
+	"password":"Password",
+	"tooShort":"Too Short!",
+	"tooLong":"Too Long!",
+	"required":"Required",
+	"notMatch":"Passwords must match",
+	"repeatPassword":"Repeat Password",
+	"changeAccount":"Change Account Password",
+	"forgetTitle":"New Password",
+	"forgetSubTitle":"We will send you an email that will allow you to recover your password.",
+	"email": "Email",
+	"sendEmail":"Send Email",
+	"invalid":"Invalid email"
+}
+
+
