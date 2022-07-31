@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { Box } from '@mui/material';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -53,14 +54,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 function DarkMode({darkMode, setDarkMode}:any) {
   return (
-    <div style={{display: 'flex', justifyContent: "flex-end"}}>
+    <Box sx={{display: 'flex', justifyContent: "flex-end"}}>
       <FormGroup onClick={() => setDarkMode(!darkMode)}>
         <FormControlLabel
           control={ <MaterialUISwitch sx={{ m: 1 }} defaultChecked={false}/>}
           label=""
         />
       </FormGroup>
-    </div>
+    </Box>
   )
 }
 

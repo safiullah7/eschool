@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import './App.css';
 import CustomRoutes from './routes/CustomRoutes';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import DarkMode from './components/DarkMode/DarkMode';
-
-
+import LanguageToggler from './components/Localization/LanguageToggler';
 
 
 function App() {
@@ -19,9 +18,12 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={darkTheme}>
-        <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
-        <CssBaseline />
+        <Suspense fallback={null}>
+          <LanguageToggler />
+          <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
+          <CssBaseline />
         <CustomRoutes />
+        </Suspense>
       </ThemeProvider>
     </div>
   );
