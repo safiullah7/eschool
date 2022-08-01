@@ -22,7 +22,7 @@ function SignUp({change}:any) {
   const { t } = useTranslation(["SignUp"]);
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
-  const notify = () => toast("We have sent you an email that will allow you to verify your account! Check your account!", {position: 'top-center'});
+  const notify = () => toast(t("notification"), {position: 'top-center'});
 
   const SignUpSchema = Yup.object().shape({
     email: Yup.string().email(t("invalid")).required(t("required")),
@@ -40,7 +40,7 @@ function SignUp({change}:any) {
       <Formik<Values> initialValues={{ email: '', password: '', repeatPassword: ''}} 
         validationSchema={SignUpSchema}
         onSubmit={( values ) => {
-        alert(JSON.stringify(values))
+        // alert(JSON.stringify(values))
       }}
       >
         {({handleSubmit, values, errors, touched, handleChange}) => (

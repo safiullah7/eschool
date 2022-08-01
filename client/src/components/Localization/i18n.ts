@@ -11,7 +11,7 @@ i18n.use(HttpApi).use(LanguageDetector).use(initReactI18next).init({
     backend: {
       loadPath: "/assets/languages/{{ns}}/{{lng}}.json",
     },
-		ns: ["Home", "Login", "SignUp", "Reset"],
+		ns: ["Home", "Login", "SignUp", "Reset", "Common"],
 		interpolation: {
 			escapeValue: false,
 			formatSeparator: ",",

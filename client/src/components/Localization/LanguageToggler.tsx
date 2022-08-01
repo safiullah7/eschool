@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
 import { Box, MenuItem, Select } from "@mui/material";
 
 function LanguageToggler() {

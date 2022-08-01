@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 
 
-function UserForm() {
+function UserLogin() {
   const { t } = useTranslation(["Login"]);
   const [value, setValue] = React.useState('1');
   const change = (event: React.SyntheticEvent, newValue: string) => {
@@ -44,4 +44,4 @@ function UserForm() {
 }
 
 
-export default UserForm
+export default UserLogin

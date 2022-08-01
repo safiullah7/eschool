@@ -11,5 +11,6 @@
 	"notMatch":"2Passwords must match",
 	"repeatPassword":"2Repeat Password",
 	"createAccount":"2Create Account",
-	"haveAccount":"2Have an account?"
+	"haveAccount":"2Have an account?",
+	"notification":"2We have sent you an email that will allow you to verify your account! Check your account!"
 }
