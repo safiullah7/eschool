@@ -1,28 +1,28 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
 import CustomRoutes from './routes/CustomRoutes';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import DarkMode from './components/DarkMode/DarkMode';
-import LanguageToggler from './components/Localization/LanguageToggler';
 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] =  useState(localStorage.getItem('dark-mode') === 'true')
   const darkTheme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
     },
   });
 
+  useEffect(() => {
+    localStorage.setItem('dark-mode', String(darkMode));
+  }, [darkMode]);
+
   return (
     <div className="App">
       <ThemeProvider theme={darkTheme}>
         <Suspense fallback={null}>
-          <LanguageToggler />
-          <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
           <CssBaseline />
-        <CustomRoutes />
+          <CustomRoutes darkMode={darkMode} setDarkMode={setDarkMode}/>
         </Suspense>
       </ThemeProvider>
     </div>

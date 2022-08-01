@@ -54,10 +54,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 function DarkMode({darkMode, setDarkMode}:any) {
   return (
-    <Box sx={{display: 'flex', justifyContent: "flex-end"}}>
+    <Box sx={{display: 'flex', justifyContent: "flex-end", position:"absolute", top: 0, right: 0}}>
       <FormGroup onClick={() => setDarkMode(!darkMode)}>
         <FormControlLabel
-          control={ <MaterialUISwitch sx={{ m: 1 }} defaultChecked={false}/>}
+          control={ <MaterialUISwitch sx={{ m: 1 }} defaultChecked={darkMode}/>}
           label=""
         />
       </FormGroup>
