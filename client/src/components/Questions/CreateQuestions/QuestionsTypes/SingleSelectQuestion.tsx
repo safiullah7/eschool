@@ -3,12 +3,13 @@ import CreateQuestionInput from './CreateQuestionInput';
 interface Props{
   input: any
   setInput: any
+  type: any
 }
 
 
-function SingleSelectQuestion({ input, setInput}:Props) {
+function SingleSelectQuestion({ input, setInput, type}:Props) {
   const handleChange = (e:any) =>{
-    setInput({ ...input, [e.target.name]: e.target.value });
+    setInput({...input, questionType: type, [e.target.name]: e.target.value })
   }
   
 

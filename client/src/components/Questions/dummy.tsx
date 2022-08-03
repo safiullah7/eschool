@@ -18,6 +18,24 @@ export const dummyData = [
     correctAnswer:"c"
   },
   {
+    id: "6",
+    questionType: "multiselect",
+    questionText: "Which of the household members received any type of aid last month?",
+    a: "Anna",
+    b: "Mary",
+    c: "Michiel",
+    correctAnswer:"b, c"
+  },
+  {
+    id: "7",
+    questionType: "inputtext",
+    questionText: "How many members received any type of aid last month?",
+    a: "1212",
+    b: "1212",
+    c: "1212",
+    correctAnswer:"1212"
+  },
+  {
     id: "3",
     questionType: "singleselect",
     questionText: "He's arriving ___ the station at six.",
@@ -44,13 +62,5 @@ export const dummyData = [
     c: "Car",
     correctAnswer:"a,b"
   },
-  {
-    id: "6",
-    questionType: "multiselect",
-    questionText: "Which of the household members received any type of aid last month?",
-    a: "Anna",
-    b: "Mary",
-    c: "Michiel",
-    correctAnswer:"b, c"
-  }
+  
 ]

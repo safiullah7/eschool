@@ -45,20 +45,20 @@ function CreateQuestion() {
           <Typography variant="h6">Choose type of question</Typography>
           <Select value={type} onChange={handleChange} displayEmpty inputProps={{ 'aria-label': 'Without label' }} 
           sx={{ margin: "10px 0", minWidth: 250, height: "40px" }} >
-            <MenuItem value="multipleselect">Multiple Select</MenuItem>
+            <MenuItem value="multiselect">Multiple Select</MenuItem>
             <MenuItem value="singleselect">Multiple Choice</MenuItem>
             <MenuItem value="textinput">Input Text</MenuItem>
           </Select>
           <Box sx={{maxWidth: "300px"}}>
             <form style={{display:"flex", flexDirection:"column"}}>
               {type==="textinput" && (
-                <TextQuestion input={input} setInput={setInput}/>)
+                <TextQuestion input={input} setInput={setInput} type={type} />)
               }
               {type==="singleselect" && (
-                <SingleSelectQuestion input={input} setInput={setInput}/>)
+                <SingleSelectQuestion input={input} setInput={setInput} type={type}/>)
               }
-              {type==="multipleselect" && (
-                <MultipleSelectQuestion input={input} setInput={setInput}/>)
+              {type==="multiselect" && (
+                <MultipleSelectQuestion input={input} setInput={setInput} type={type}/>)
               }
               {type && <Button style={{marginTop: "10px"}} variant="contained" type="submit" onClick={(e:any)=>{ handleOpen(); handleClick(e)}}>Create</Button>}
             </form>
