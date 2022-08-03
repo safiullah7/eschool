@@ -7,10 +7,10 @@ interface Props {
   name: string
 }
 
-function MultipleChoiceInput({label, handleChange, name}:Props) {
+function CreateQuestionInput({label, handleChange, name}:Props) {
   return (
     <TextField id="demo-helper-text-misaligned-no-helper" label={label} sx={{margin: "10px 0"}} size="small" onChange={handleChange} name={name}/>
   )
 }
 
-export default MultipleChoiceInput
+export default CreateQuestionInput

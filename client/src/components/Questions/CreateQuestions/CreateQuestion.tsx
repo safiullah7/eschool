@@ -1,6 +1,6 @@
 import { Box, Button, MenuItem, Modal, Select, Typography } from'@mui/material';
 import React, { useState } from 'react'
-import MultipleChoice from './QuestionsTypes/MultipleChoice';
+import SingleSelectQuestion from './QuestionsTypes/SingleSelectQuestion';
 
 
 const style = {
@@ -48,7 +48,7 @@ function CreateQuestion() {
             </Typography>) 
           }
           {type==="multiplechoice" && (
-            <MultipleChoice handleOpen={handleOpen}/>)
+            <SingleSelectQuestion handleOpen={handleOpen}/>)
           }
           {type==="multipleselect" && (
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>

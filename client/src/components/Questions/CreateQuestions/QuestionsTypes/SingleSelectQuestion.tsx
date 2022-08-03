@@ -1,13 +1,13 @@
 import { Box, Button } from '@mui/material'
 import React, { useState } from 'react'
-import MultipleChoiceInput from './MultipleChoiceInput'
+import MultipleChoiceInput from './CreateQuestionInput'
 
 interface Props{
   handleOpen: any
 }
 
 
-function MultipleChoice({handleOpen}:Props) {
+function SingleSelectQuestion({handleOpen}:Props) {
   const [input, setInput] = useState({ questionType: 'multipleChoice', questionText: '', a:'', b:'', c:'', answer: ''});
   const handleClick = (e:any) => {
     e.preventDefault()
@@ -30,4 +30,4 @@ function MultipleChoice({handleOpen}:Props) {
   )
 }
 
-export default MultipleChoice
+export default SingleSelectQuestion
