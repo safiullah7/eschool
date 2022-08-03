@@ -25,5 +25,32 @@ export const dummyData = [
     b: "on",
     c: "at",
     correctAnswer:"b"
+  },
+  {
+    id: "4",
+    questionType: "multiselect",
+    questionText: "What do you appreciate the most about our product",
+    a: "Design",
+    b: "Ease of use",
+    c: "Price",
+    correctAnswer:"b, c"
+  },
+  {
+    id: "5",
+    questionType: "multiselect",
+    questionText: "Select all the assets the household",
+    a: "Television",
+    b: "Fridge",
+    c: "Car",
+    correctAnswer:"a,b"
+  },
+  {
+    id: "6",
+    questionType: "multiselect",
+    questionText: "Which of the household members received any type of aid last month?",
+    a: "Anna",
+    b: "Mary",
+    c: "Michiel",
+    correctAnswer:"b, c"
   }
 ]
