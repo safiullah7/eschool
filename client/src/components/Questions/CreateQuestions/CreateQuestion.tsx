@@ -1,6 +1,8 @@
 import { Box, Button, MenuItem, Modal, Select, Typography } from'@mui/material';
 import React, { useState } from 'react'
+import MultipleSelectQuestion from './QuestionsTypes/MultipleSelectQuestion';
 import SingleSelectQuestion from './QuestionsTypes/SingleSelectQuestion';
+import TextQuestion from './QuestionsTypes/TextQuestion';
 
 
 const style = {
@@ -21,13 +23,19 @@ const style = {
 
 
 function CreateQuestion() {
+  const [type, setType] = useState();
+  const [input, setInput] = useState({ questionType: '', questionText: '', a:'', b:'', c:'', answer: ''});
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
-  const [type, setType] = useState();
 
   const handleChange = (event:any) => {
     setType(event.target.value);
   };
+  const handleClick = (e:any) => {
+    e.preventDefault()
+    //@ts-ignore
+    localStorage.setItem('questions', JSON.stringify(input))
+  }
 
   return (
     <div style={{margin: "40px 20px"}}>
@@ -38,23 +46,23 @@ function CreateQuestion() {
           <Select value={type} onChange={handleChange} displayEmpty inputProps={{ 'aria-label': 'Without label' }} 
           sx={{ margin: "10px 0", minWidth: 250, height: "40px" }} >
             <MenuItem value="multipleselect">Multiple Select</MenuItem>
-            <MenuItem value="multiplechoice">Multiple Choice</MenuItem>
+            <MenuItem value="singleselect">Multiple Choice</MenuItem>
             <MenuItem value="textinput">Input Text</MenuItem>
           </Select>
-  
-          {type==="textinput" && (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Input Text
-            </Typography>) 
-          }
-          {type==="multiplechoice" && (
-            <SingleSelectQuestion handleOpen={handleOpen}/>)
-          }
-          {type==="multipleselect" && (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Multiple Select
-            </Typography>) 
-          }
+          <Box sx={{maxWidth: "300px"}}>
+            <form style={{display:"flex", flexDirection:"column"}}>
+              {type==="textinput" && (
+                <TextQuestion input={input} setInput={setInput}/>)
+              }
+              {type==="singleselect" && (
+                <SingleSelectQuestion input={input} setInput={setInput}/>)
+              }
+              {type==="multipleselect" && (
+                <MultipleSelectQuestion input={input} setInput={setInput}/>)
+              }
+              {type && <Button style={{marginTop: "10px"}} variant="contained" type="submit" onClick={(e:any)=>{ handleOpen(); handleClick(e)}}>Create</Button>}
+            </form>
+          </Box>
         </Box>
       </Modal>
     </div>

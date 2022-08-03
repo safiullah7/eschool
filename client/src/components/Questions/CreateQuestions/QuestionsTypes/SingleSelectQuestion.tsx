@@ -1,32 +1,25 @@
-import { Box, Button } from '@mui/material'
-import React, { useState } from 'react'
-import MultipleChoiceInput from './CreateQuestionInput'
+import CreateQuestionInput from './CreateQuestionInput';
 
 interface Props{
-  handleOpen: any
+  input: any
+  setInput: any
 }
 
 
-function SingleSelectQuestion({handleOpen}:Props) {
-  const [input, setInput] = useState({ questionType: 'multipleChoice', questionText: '', a:'', b:'', c:'', answer: ''});
-  const handleClick = (e:any) => {
-    e.preventDefault()
-  }
+function SingleSelectQuestion({ input, setInput}:Props) {
   const handleChange = (e:any) =>{
     setInput({ ...input, [e.target.name]: e.target.value });
   }
+  
 
   return (
-    <Box sx={{maxWidth: "300px"}}>
-      <form style={{display:"flex", flexDirection:"column"}}>
-        <MultipleChoiceInput label="Enter Question Heading" handleChange={handleChange} name="questionText" />
-        <MultipleChoiceInput label="A" handleChange={handleChange} name="a"/>
-        <MultipleChoiceInput label="B" handleChange={handleChange} name="b"/>
-        <MultipleChoiceInput label="C" handleChange={handleChange} name="c"/>
-        <MultipleChoiceInput label="Answer" handleChange={handleChange} name="answer"/>
-        <Button style={{marginTop: "10px"}} variant="contained" type="submit" onClick={(e:any)=>{ handleOpen(); handleClick(e)}}>Create</Button>
-      </form>
-    </Box>
+    <>
+      <CreateQuestionInput label="Enter Question Heading" handleChange={handleChange} name="questionText" />
+      <CreateQuestionInput label="A" handleChange={handleChange} name="a"/>
+      <CreateQuestionInput label="B" handleChange={handleChange} name="b"/>
+      <CreateQuestionInput label="C" handleChange={handleChange} name="c"/>
+      <CreateQuestionInput label="Answer" handleChange={handleChange} name="answer"/>
+    </>
   )
 }
 
