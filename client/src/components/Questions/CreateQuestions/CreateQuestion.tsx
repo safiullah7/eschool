@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, MenuItem, Modal, Paper, Select, Typography, SelectChangeEvent} from'@mui/material';
+import { Box, Button, MenuItem, Modal, Select, Typography } from'@mui/material';
 import React, { useState } from 'react'
 import MultipleChoice from './QuestionsTypes/MultipleChoice';
 
@@ -42,15 +42,15 @@ function CreateQuestion() {
             <MenuItem value="textinput">Input Text</MenuItem>
           </Select>
   
-          {type=="textinput" && (
+          {type==="textinput" && (
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Input Text
             </Typography>) 
           }
-          {type=="multiplechoice" && (
+          {type==="multiplechoice" && (
             <MultipleChoice handleOpen={handleOpen}/>)
           }
-          {type=="multipleselect" && (
+          {type==="multipleselect" && (
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Multiple Select
             </Typography>) 
