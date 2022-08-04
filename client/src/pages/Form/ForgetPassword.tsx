@@ -20,7 +20,6 @@ function ForgetPassword() {
   });
 
   return (
-    <Wrapper>
       <BoxForm>
         <Formik<Values> initialValues={{ email: '' }} 
             validationSchema={ForgetSchema}
@@ -37,7 +36,6 @@ function ForgetPassword() {
           </form>)}
         </Formik>
       </BoxForm>
-    </Wrapper>
   )
 }
 

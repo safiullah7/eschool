@@ -1,29 +1,30 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import './App.css';
-import CustomRoutes from './routes/CustomRoutes';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { useTranslation } from 'react-i18next';
-import rtlPlugin from 'stylis-plugin-rtl';
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache';
-
+import React, { Suspense, useEffect, useState } from "react";
+import "./styles/App.css";
+import CustomRoutes from "./routes/CustomRoutes";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useTranslation } from "react-i18next";
+import rtlPlugin from "stylis-plugin-rtl";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 
 function App() {
   const { t } = useTranslation(["Common"]);
-  const [darkMode, setDarkMode] =  useState(localStorage.getItem('dark-mode') === 'true')
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("dark-mode") === "true"
+  );
   const darkTheme = createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      mode: darkMode ? "dark" : "light",
     },
   });
 
   useEffect(() => {
-    localStorage.setItem('dark-mode', String(darkMode));
+    localStorage.setItem("dark-mode", String(darkMode));
   }, [darkMode]);
 
   const cacheRtl = createCache({
-    key: t("isRTL") ? 'muirtl' : 'muiltr',
+    key: t("isRTL") ? "muirtl" : "muiltr",
     stylisPlugins: t("isRTL") ? [rtlPlugin] : [],
   });
 
@@ -33,7 +34,7 @@ function App() {
         <ThemeProvider theme={darkTheme}>
           <Suspense fallback={<h1>Loading profile...</h1>}>
             <CssBaseline />
-            <CustomRoutes darkMode={darkMode} setDarkMode={setDarkMode}/>
+            <CustomRoutes darkMode={darkMode} setDarkMode={setDarkMode} />
           </Suspense>
         </ThemeProvider>
       </CacheProvider>
