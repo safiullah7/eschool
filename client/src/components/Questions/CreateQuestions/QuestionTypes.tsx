@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, Typography } from "@mui/material";
 import React, { useState } from "react";
 import CreateQuestionInput from "./QuestionsTypes/CreateQuestionInput";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -22,7 +22,7 @@ function QuestionTypes() {
       {[...Array(option)].map((item, index) => (
         <div key={index}>
           <CreateQuestionInput
-            label={`Enter ${index + 1}th Option `}
+            label={`${index + 1}th Option `}
             name="questionText"
             textarea={false}
           />
@@ -56,6 +56,26 @@ function QuestionTypes() {
             Remove
           </Typography>
         </Button>
+      </Box>
+      <Box sx={{ margin: "10px 0 20px 0" }}>
+        <CreateQuestionInput
+          label="Enter Correct Answer"
+          name="answer"
+          textarea={false}
+        />
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: "12px",
+            margin: "-4px 0 0 5px",
+            width: "400px",
+            opacity: "0.7",
+          }}
+        >
+          {false
+            ? "Enter correct option with a number (e.x: 2)"
+            : "Enter correct options with numbers between commas (e.x: 1,3)"}
+        </Typography>
       </Box>
     </Box>
   );

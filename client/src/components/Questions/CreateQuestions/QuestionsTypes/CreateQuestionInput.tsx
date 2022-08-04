@@ -12,19 +12,19 @@ function CreateQuestionInput({ label, name, textarea }: Props) {
     <>
       {!textarea ? (
         <>
-          <InputLabel sx={{ fontSize: "15px", margin: "10px 0 0px 0" }}>
+          <InputLabel sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}>
             {label}
           </InputLabel>
           <OutlinedInput
             size="small"
-            sx={{ margin: "0px 0 10px 0", width: "500px" }}
+            sx={{ margin: "0px 0 5px 0", width: "500px", height: "30px" }}
             minRows={1}
             multiline
           />
         </>
       ) : (
         <>
-          <InputLabel sx={{ fontSize: "15px", margin: "20px 0 0px 0" }}>
+          <InputLabel sx={{ fontSize: "14px", margin: "10px 0 1px 0" }}>
             {label}
           </InputLabel>
           <OutlinedInput

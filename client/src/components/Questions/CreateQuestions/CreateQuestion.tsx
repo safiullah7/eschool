@@ -7,25 +7,22 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import MultipleSelectQuestion from "./QuestionsTypes/MultipleSelectQuestion";
-import SingleSelectQuestion from "./QuestionsTypes/SingleSelectQuestion";
-import TextQuestion from "./QuestionsTypes/TextQuestion";
 import QuestionTypes from "./QuestionTypes";
 
 const style = {
   position: "absolute" as "absolute",
-  display: "flex",
-  justifyContent: "center",
+  display: "block",
   flexDirection: "column",
   top: "10%",
   left: "10%",
+  height: "80%",
+  overflowY: "auto",
   right: "10%",
   width: "80%",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-  minHeight: "40%",
 };
 
 function CreateQuestion() {
