@@ -1,24 +1,21 @@
-import CreateQuestionInput from './CreateQuestionInput';
+import CreateQuestionInput from "./CreateQuestionInput";
 
-interface Props{
-  input: any
-  setInput: any
-  type: any
+interface Props {
+  input: any;
+  setInput: any;
+  type: any;
 }
 
-
-function TextQuestion({ input, setInput, type }:Props) {
-  const handleChange = (e:any) =>{
-    setInput({...input, questionType: type})
-    setInput({ ...input, [e.target.name]: e.target.value });
-  }
-  
-
+function TextQuestion({ input, setInput, type }: Props) {
   return (
     <>
-      <CreateQuestionInput label="Enter Question Heading" handleChange={handleChange} name="questionText" />
+      <CreateQuestionInput
+        label="Enter Question Heading"
+        name="questionText"
+        textarea={true}
+      />
     </>
-  )
+  );
 }
 
-export default TextQuestion
+export default TextQuestion;

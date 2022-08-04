@@ -1,27 +1,25 @@
-import CreateQuestionInput from './CreateQuestionInput';
+import CreateQuestionInput from "./CreateQuestionInput";
 
-interface Props{
-  input: any
-  setInput: any
-  type: any
+interface Props {
+  input: any;
+  setInput: any;
+  type: any;
 }
 
-
-function SingleSelectQuestion({ input, setInput, type}:Props) {
-  const handleChange = (e:any) =>{
-    setInput({...input, questionType: type, [e.target.name]: e.target.value })
-  }
-  
-
+function SingleSelectQuestion({ input, setInput, type }: Props) {
   return (
     <>
-      <CreateQuestionInput label="Enter Question Heading" handleChange={handleChange} name="questionText" />
-      <CreateQuestionInput label="A" handleChange={handleChange} name="a"/>
-      <CreateQuestionInput label="B" handleChange={handleChange} name="b"/>
-      <CreateQuestionInput label="C" handleChange={handleChange} name="c"/>
-      <CreateQuestionInput label="Answer" handleChange={handleChange} name="answer"/>
+      <CreateQuestionInput
+        label="Enter Question Heading"
+        name="questionText"
+        textarea={true}
+      />
+      <CreateQuestionInput label="A" name="a" textarea={false} />
+      <CreateQuestionInput label="B" name="b" textarea={false} />
+      <CreateQuestionInput label="C" name="c" textarea={false} />
+      <CreateQuestionInput label="Answer" name="answer" textarea={false} />
     </>
-  )
+  );
 }
 
-export default SingleSelectQuestion
+export default SingleSelectQuestion;

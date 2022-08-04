@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import MultipleSelectQuestion from "./QuestionsTypes/MultipleSelectQuestion";
 import SingleSelectQuestion from "./QuestionsTypes/SingleSelectQuestion";
 import TextQuestion from "./QuestionsTypes/TextQuestion";
+import QuestionTypes from "./QuestionTypes";
 
 const style = {
   position: "absolute" as "absolute",
@@ -73,23 +74,24 @@ function CreateQuestion() {
           </Select>
           <Box sx={{ maxWidth: "300px" }}>
             <form style={{ display: "flex", flexDirection: "column" }}>
-              {type === "textinput" && (
+              <QuestionTypes />
+              {/* {type === "textinput" && (
                 <TextQuestion input={input} setInput={setInput} type={type} />
-              )}
-              {type === "singleselect" && (
+              )} */}
+              {/* {type === "singleselect" && (
                 <SingleSelectQuestion
                   input={input}
                   setInput={setInput}
                   type={type}
                 />
-              )}
-              {type === "multiselect" && (
+              )} */}
+              {/* {type === "multiselect" && (
                 <MultipleSelectQuestion
                   input={input}
                   setInput={setInput}
                   type={type}
                 />
-              )}
+              )} */}
               {type && (
                 <Button
                   style={{ marginTop: "10px" }}

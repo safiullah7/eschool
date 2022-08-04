@@ -1,30 +1,29 @@
-import { FormHelperText } from '@mui/material';
-import CreateQuestionInput from './CreateQuestionInput';
+import { FormHelperText } from "@mui/material";
+import CreateQuestionInput from "./CreateQuestionInput";
 
 interface Props {
-  input: any
-  setInput: any
-  type: any
+  input: any;
+  setInput: any;
+  type: any;
 }
 
-
-function MultipleSelectQuestion({ input, setInput, type}:Props) {
-  const handleChange = (e:any) =>{
-    setInput({...input, questionType: type})
-    setInput({ ...input, [e.target.name]: e.target.value });
-  }
-  
-
+function MultipleSelectQuestion({ input, setInput, type }: Props) {
   return (
     <>
-      <CreateQuestionInput label="Enter Question Heading" handleChange={handleChange} name="questionText" />
-      <CreateQuestionInput label="A" handleChange={handleChange} name="a"/>
-      <CreateQuestionInput label="B" handleChange={handleChange} name="b"/>
-      <CreateQuestionInput label="C" handleChange={handleChange} name="c"/>
-      <CreateQuestionInput label="Answer" handleChange={handleChange} name="answer"/>
-      <FormHelperText sx={{margin: '-5px 0 10px 0'}}>You can enter answer multiple e.x A,B</FormHelperText>
+      <CreateQuestionInput
+        label="Enter Question Heading"
+        name="questionText"
+        textarea={true}
+      />
+      <CreateQuestionInput label="A" name="a" textarea={false} />
+      <CreateQuestionInput label="B" name="b" textarea={false} />
+      <CreateQuestionInput label="C" name="c" textarea={false} />
+      <CreateQuestionInput label="Answer" name="answer" textarea={false} />
+      <FormHelperText sx={{ margin: "-5px 0 10px 0" }}>
+        You can enter answer multiple e.x A,B
+      </FormHelperText>
     </>
-  )
+  );
 }
 
-export default MultipleSelectQuestion
+export default MultipleSelectQuestion;
