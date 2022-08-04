@@ -2,10 +2,15 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 
-function MainLayout() {
+interface Props {
+  darkMode: any;
+  setDarkMode: any;
+}
+
+function MainLayout({ darkMode, setDarkMode }: Props) {
   return (
     <>
-      <Navbar />
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Outlet />
     </>
   );
