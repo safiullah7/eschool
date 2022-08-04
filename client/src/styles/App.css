@@ -37,11 +37,19 @@
   outline: none;
   padding: 0px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0 10px;
 }
-.lan__selec--option {
+
+.lan__select:hover {
+  color: #01d986;
+}
+
+.lan__select option {
   font-size: 16px;
-  line-height: 25px;
-  border: 1px solid red;
 }
 
 @media screen and (max-width: 500px) {
