@@ -1,26 +1,30 @@
-import { Box } from '@mui/material';
-import React from 'react'
+import { Box } from "@mui/material";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import DarkMode from '../components/DarkMode/DarkMode';
-import CreateQuestions from '../pages/Questions';
-import ForgetPassword from '../pages/Form/ForgetPassword';
-import ResetPassword from '../pages/Form/ResetPassword';
-import UserLogin from '../pages/Form/UserLogin';
-import Home from '../pages/Home';
+import ForgetPassword from "../pages/Form/ForgetPassword";
+import ResetPassword from "../pages/Form/ResetPassword";
+import UserLogin from "../pages/Form/UserLogin";
+import Home from "../pages/Home";
+import MainLayout from "./MainLayout";
+import FormLayout from "./FormLayout";
 
-function CustomRoutes({darkMode, setDarkMode}:any) {
+function CustomRoutes({ darkMode, setDarkMode }: any) {
   return (
     <Box className="container">
-      <DarkMode darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<CreateQuestions />} />
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/reset" element={<ResetPassword />} />
-        <Route path="/forget" element={<ForgetPassword />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+        <Route
+          element={<FormLayout darkMode={darkMode} setDarkMode={setDarkMode} />}
+        >
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/reset" element={<ResetPassword />} />
+          <Route path="/forget" element={<ForgetPassword />} />
+        </Route>
       </Routes>
     </Box>
-  )
+  );
 }
 
-export default CustomRoutes
+export default CustomRoutes;
