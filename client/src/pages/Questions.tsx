@@ -1,16 +1,12 @@
-import React from 'react'
-import LanguageToggler from '../components/Localization/LanguageToggler'
-import CreateQuestion from '../components/Questions/CreateQuestions/CreateQuestion'
-import ListQuestions from '../components/Questions/ListQuestion/ListQuestions'
+import React from "react";
+import ListQuestions from "../components/Questions/ListQuestion/ListQuestions";
 
-function CreateQuestions() {
+function Questions() {
   return (
-    <div>
-      <LanguageToggler />
-      <CreateQuestion />
+    <div style={{ margin: "30px 20px" }}>
       <ListQuestions />
     </div>
-  )
+  );
 }
 
-export default CreateQuestions
+export default Questions;

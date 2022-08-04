@@ -6,13 +6,14 @@ interface Props {
   darkMode: any;
   setDarkMode: any;
 }
+
 function FormLayout({ darkMode, setDarkMode }: Props) {
   return (
-    <>
+    <div className="container">
       <Wrapper darkMode={darkMode} setDarkMode={setDarkMode}>
         <Outlet />
       </Wrapper>
-    </>
+    </div>
   );
 }
 

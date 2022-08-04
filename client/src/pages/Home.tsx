@@ -5,8 +5,10 @@ function Home() {
   const { t } = useTranslation(["Home"]);
   console.log(t);
   return (
-    <div>
-      <h1 className="text-center">{t("home")}</h1>
+    <div className="container">
+      <div style={{ padding: "40px 0px" }}>
+        <h1 className="text-center">{t("home")}</h1>
+      </div>
     </div>
   );
 }
