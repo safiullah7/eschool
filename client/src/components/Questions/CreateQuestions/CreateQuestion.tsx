@@ -33,8 +33,6 @@ function CreateQuestion() {
   };
   const handleClick = (e:any) => {
     e.preventDefault()
-    //@ts-ignore
-    localStorage.setItem('questions', JSON.stringify(input))
   }
 
   return (
