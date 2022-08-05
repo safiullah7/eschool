@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import QuestionTypes from "./QuestionTypes";
+import TextQuestion from "./TextQuestion";
 
 const style = {
   position: "absolute" as "absolute",
@@ -71,24 +72,9 @@ function CreateQuestion() {
           </Select>
           <Box sx={{ maxWidth: "300px" }}>
             <form style={{ display: "flex", flexDirection: "column" }}>
-              <QuestionTypes />
-              {/* {type === "textinput" && (
-                <TextQuestion input={input} setInput={setInput} type={type} />
-              )} */}
-              {/* {type === "singleselect" && (
-                <SingleSelectQuestion
-                  input={input}
-                  setInput={setInput}
-                  type={type}
-                />
-              )} */}
-              {/* {type === "multiselect" && (
-                <MultipleSelectQuestion
-                  input={input}
-                  setInput={setInput}
-                  type={type}
-                />
-              )} */}
+              {type === "textinput" && <TextQuestion />}
+              {type === "singleselect" && <QuestionTypes type="singleselect" />}
+              {type === "multiselect" && <QuestionTypes type="multiselect" />}
               {type && (
                 <Button
                   style={{ marginTop: "10px" }}

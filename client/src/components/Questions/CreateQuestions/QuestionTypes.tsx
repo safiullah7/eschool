@@ -1,16 +1,17 @@
-import { Box, Button, FormHelperText, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
-import CreateQuestionInput from "./QuestionsTypes/CreateQuestionInput";
+import CreateQuestionInput from "./CreateQuestionInput";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import Options from "./Options";
 
 interface Props {
   type: any;
 }
 
-function QuestionTypes() {
+function QuestionTypes({ type }: Props) {
   const [option, setOption] = useState(1);
-  console.log(option);
+
   return (
     <Box>
       <CreateQuestionInput
@@ -20,12 +21,19 @@ function QuestionTypes() {
       />
 
       {[...Array(option)].map((item, index) => (
-        <div key={index}>
-          <CreateQuestionInput
-            label={`${index + 1}th Option `}
-            name="questionText"
-            textarea={false}
-          />
+        <div key={index} style={{ marginBottom: "20px" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              margin: "-4px 0 0 5px",
+              width: "400px",
+              opacity: "0.7",
+              color: "#01d986",
+              fontWeight: "600",
+            }}
+          >{`${index + 1}th Option `}</Typography>
+          <Options />
         </div>
       ))}
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -72,7 +80,7 @@ function QuestionTypes() {
             opacity: "0.7",
           }}
         >
-          {false
+          {type === "singleselect"
             ? "Enter correct option with a number (e.x: 2)"
             : "Enter correct options with numbers between commas (e.x: 1,3)"}
         </Typography>

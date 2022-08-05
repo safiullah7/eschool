@@ -17,7 +17,11 @@ function CreateQuestionInput({ label, name, textarea }: Props) {
           </InputLabel>
           <OutlinedInput
             size="small"
-            sx={{ margin: "0px 0 5px 0", width: "500px", height: "30px" }}
+            sx={{
+              margin: "0px 0 5px 0",
+              width: "500px",
+              minHeight: "30px",
+            }}
             minRows={1}
             multiline
           />
