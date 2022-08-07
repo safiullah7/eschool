@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import CreateQuestionInput from "./CreateQuestionInput";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-function Options() {
+interface Props {
+  handleChange: any;
+  index: any;
+}
+function Options({ handleChange, index }: Props) {
   const [selectedFile, setSelectedFile] = useState(false);
 
   return (
@@ -11,13 +15,15 @@ function Options() {
       <div>
         <CreateQuestionInput
           label="Enter main text"
-          name="questionText"
+          name={`${index}optionText`}
           textarea={false}
+          handleChange={handleChange}
         />
         <CreateQuestionInput
           label="Enter description (optional)"
-          name="questionText"
+          name={`${index}optionDescription`}
           textarea={false}
+          handleChange={handleChange}
         />
         <InputLabel sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}>
           Enter image (optional)
@@ -29,7 +35,10 @@ function Options() {
               hidden
               accept="image/*"
               type="file"
-              onChange={(e: any) => setSelectedFile(true)}
+              // onChange={handleChange}
+              name={`${index}optionImage`}
+              onChange={handleChange}
+              onClick={() => setSelectedFile(true)}
             />
           </Button>
           {selectedFile === true && (

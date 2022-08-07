@@ -1,14 +1,17 @@
-import React from "react";
-import {
-  FormLabel,
-  InputLabel,
-  OutlinedInput,
-  Typography,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Typography } from "@mui/material";
 import CreateQuestion from "../components/Questions/CreateQuestions/CreateQuestion";
 import CreateTextArea from "../components/Create/CreateTextArea";
 
 function Create() {
+  const [data, setData] = useState({});
+
+  const handleChange = (e: any) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  console.log(data);
+
   return (
     <div className="container">
       <Typography
@@ -27,9 +30,23 @@ function Create() {
           maxWidth: "700px",
         }}
       >
-        <CreateTextArea label="Enter test name" textarea={false} />
-        <CreateTextArea label="Enter test description" textarea={true} />
-        <CreateQuestion />
+        <CreateTextArea
+          label="Enter test name"
+          textarea={false}
+          handleChange={handleChange}
+          name="testName"
+        />
+        <CreateTextArea
+          label="Enter test description"
+          textarea={true}
+          handleChange={handleChange}
+          name="testDescription"
+        />
+        <CreateQuestion
+          data={data}
+          setData={setData}
+          handleChange={handleChange}
+        />
       </form>
     </div>
   );

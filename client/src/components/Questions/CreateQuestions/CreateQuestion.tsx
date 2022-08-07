@@ -26,21 +26,20 @@ const style = {
   p: 4,
 };
 
-function CreateQuestion() {
+interface Props {
+  data: any;
+  setData: any;
+  handleChange: any;
+}
+
+function CreateQuestion({ data, setData, handleChange }: Props) {
   const [type, setType] = useState();
-  const [input, setInput] = useState({
-    questionType: "",
-    questionText: "",
-    a: "",
-    b: "",
-    c: "",
-    answer: "",
-  });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
-  const handleChange = (event: any) => {
+  const handleSelectChange = (event: any) => {
     setType(event.target.value);
+    setData({ ...data, [event.target.name]: event.target.value });
   };
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -61,10 +60,11 @@ function CreateQuestion() {
           <Typography variant="h6">Choose type of question</Typography>
           <Select
             value={type}
-            onChange={handleChange}
+            onChange={handleSelectChange}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
             sx={{ margin: "10px 0", minWidth: 250, height: "40px" }}
+            name="questionType"
           >
             <MenuItem value="multiselect">Multiple Select</MenuItem>
             <MenuItem value="singleselect">Multiple Choice</MenuItem>
@@ -72,9 +72,18 @@ function CreateQuestion() {
           </Select>
           <Box sx={{ maxWidth: "300px" }}>
             <form style={{ display: "flex", flexDirection: "column" }}>
-              {type === "textinput" && <TextQuestion />}
-              {type === "singleselect" && <QuestionTypes type="singleselect" />}
-              {type === "multiselect" && <QuestionTypes type="multiselect" />}
+              {type === "textinput" && (
+                <TextQuestion handleChange={handleChange} />
+              )}
+              {type === "singleselect" && (
+                <QuestionTypes
+                  type="singleselect"
+                  handleChange={handleChange}
+                />
+              )}
+              {type === "multiselect" && (
+                <QuestionTypes type="multiselect" handleChange={handleChange} />
+              )}
               {type && (
                 <Button
                   style={{ marginTop: "10px" }}
