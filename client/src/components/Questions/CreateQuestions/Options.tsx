@@ -35,7 +35,6 @@ function Options({ handleChange, index }: Props) {
               hidden
               accept="image/*"
               type="file"
-              // onChange={handleChange}
               name={`${index}optionImage`}
               onChange={handleChange}
               onClick={() => setSelectedFile(true)}
