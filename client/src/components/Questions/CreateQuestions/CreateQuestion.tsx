@@ -27,19 +27,16 @@ const style = {
 };
 
 interface Props {
-  data: any;
-  setData: any;
   handleChange: any;
 }
 
-function CreateQuestion({ data, setData, handleChange }: Props) {
+function CreateQuestion({ handleChange }: Props) {
   const [type, setType] = useState();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   const handleSelectChange = (event: any) => {
     setType(event.target.value);
-    setData({ ...data, [event.target.name]: event.target.value });
   };
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -48,7 +45,7 @@ function CreateQuestion({ data, setData, handleChange }: Props) {
   return (
     <div style={{ margin: "40px auto 0 auto" }}>
       <Button onClick={handleOpen} variant="contained" size="large">
-        Create Your Question Section
+        Create Your Question
       </Button>
       <Modal
         open={open}

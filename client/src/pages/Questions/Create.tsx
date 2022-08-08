@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import CreateQuestion from "../components/Questions/CreateQuestions/CreateQuestion";
-import CreateTextArea from "../components/Create/CreateTextArea";
+import { Button, Typography } from "@mui/material";
+import CreateTextArea from "../../components/Create/CreateTextArea";
+import { Link } from "react-router-dom";
 
-function Create() {
-  const [data, setData] = useState({});
+interface Props {
+  handleChange: any;
+}
 
-  const handleChange = (e: any) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  console.log(data);
-
+function Create({ handleChange }: Props) {
   return (
     <div className="container">
       <Typography
@@ -34,19 +30,20 @@ function Create() {
           label="Enter test name"
           textarea={false}
           handleChange={handleChange}
-          name="testName"
+          name="name"
         />
         <CreateTextArea
           label="Enter test description"
           textarea={true}
           handleChange={handleChange}
-          name="testDescription"
+          name="desc"
         />
-        <CreateQuestion
-          data={data}
-          setData={setData}
-          handleChange={handleChange}
-        />
+
+        <Link to="/create/section">
+          <Button sx={{ width: "100%" }} variant="contained" size="large">
+            Create Your Test Name
+          </Button>
+        </Link>
       </form>
     </div>
   );
