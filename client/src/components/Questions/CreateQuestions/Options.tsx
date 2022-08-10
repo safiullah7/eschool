@@ -15,13 +15,13 @@ function Options({ handleChange, index }: Props) {
       <div>
         <CreateQuestionInput
           label="Enter main text"
-          name={`${index}optionText`}
+          name={`optionText${index}`}
           textarea={false}
           handleChange={handleChange}
         />
         <CreateQuestionInput
           label="Enter description (optional)"
-          name={`${index}optionDescription`}
+          name={`optionDescription${index}`}
           textarea={false}
           handleChange={handleChange}
         />
@@ -35,7 +35,7 @@ function Options({ handleChange, index }: Props) {
               hidden
               accept="image/*"
               type="file"
-              name={`${index}optionImage`}
+              name={`optionImage${index}`}
               onChange={handleChange}
               onClick={() => setSelectedFile(true)}
             />
