@@ -4,7 +4,6 @@ import Section from "./Section";
 
 function SecondStep() {
   const [addSection, setAddSection] = useState(1);
-  const [testData, setTestData] = useState();
 
   return (
     <div>
@@ -32,11 +31,7 @@ function SecondStep() {
               width: "60%",
             }}
           >
-            <Section
-              index={index + 1}
-              testData={testData}
-              setTestData={setTestData}
-            />
+            <Section />
           </Paper>
         ))}
       </div>

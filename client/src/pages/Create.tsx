@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CreateStepper from "../components/Create/Stepper";
 
 function Create() {

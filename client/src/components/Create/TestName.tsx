@@ -1,11 +1,7 @@
 import React from "react";
 import CreateTextArea from "./CreateTextArea";
 
-interface Props {
-  handleChange: any;
-}
-
-function TestName({ handleChange }: Props) {
+function TestName() {
   return (
     <div>
       <form
@@ -18,16 +14,10 @@ function TestName({ handleChange }: Props) {
           maxWidth: "700px",
         }}
       >
-        <CreateTextArea
-          label="Enter test name"
-          textarea={false}
-          handleChange={handleChange}
-          name="name"
-        />
+        <CreateTextArea label="Enter test name" textarea={false} name="name" />
         <CreateTextArea
           label="Enter test description"
           textarea={true}
-          handleChange={handleChange}
           name="desc"
         />
       </form>

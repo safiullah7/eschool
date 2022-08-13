@@ -7,10 +7,8 @@ import Options from "./Options";
 
 interface Props {
   type: any;
-  handleChange: any;
 }
-
-function QuestionTypes({ type, handleChange }: Props) {
+function QuestionTypes({ type }: Props) {
   const [option, setOption] = useState(1);
 
   return (
@@ -19,7 +17,6 @@ function QuestionTypes({ type, handleChange }: Props) {
         label="Enter Question"
         name="questionText"
         textarea={true}
-        handleChange={handleChange}
       />
 
       {[...Array(option)].map((item, index) => (
@@ -35,7 +32,7 @@ function QuestionTypes({ type, handleChange }: Props) {
               fontWeight: "600",
             }}
           >{`${index + 1}th Option `}</Typography>
-          <Options handleChange={handleChange} index={index + 1} />
+          <Options index={index + 1} />
         </div>
       ))}
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -72,7 +69,6 @@ function QuestionTypes({ type, handleChange }: Props) {
           label="Enter Correct Answer"
           name="answer"
           textarea={false}
-          handleChange={handleChange}
         />
         <Typography
           variant="body2"

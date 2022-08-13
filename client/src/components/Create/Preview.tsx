@@ -4,10 +4,7 @@ import MultipleSelectItem from "../Questions/ListQuestion/ListQuestionTypes/Mult
 import SingleSelectItem from "../Questions/ListQuestion/ListQuestionTypes/SingleSelectItem";
 import TextInputItem from "../Questions/ListQuestion/ListQuestionTypes/TextInputItem";
 
-interface Props {
-  test: any;
-}
-function Preview({ test }: Props) {
+function Preview() {
   return (
     <div
       style={{
@@ -16,7 +13,7 @@ function Preview({ test }: Props) {
         padding: "20px 0 40px 0",
       }}
     >
-      <div>
+      {/* <div>
         <div
           style={{
             display: "flex",
@@ -51,7 +48,7 @@ function Preview({ test }: Props) {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

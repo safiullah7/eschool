@@ -5,10 +5,9 @@ interface Props {
   label: string;
   name: string;
   textarea: boolean;
-  handleChange: any;
 }
 
-function CreateQuestionInput({ label, name, textarea, handleChange }: Props) {
+function CreateQuestionInput({ label, name, textarea }: Props) {
   return (
     <>
       {!textarea ? (
@@ -25,7 +24,6 @@ function CreateQuestionInput({ label, name, textarea, handleChange }: Props) {
             }}
             minRows={1}
             multiline
-            onChange={handleChange}
             name={name}
           />
         </>
@@ -39,7 +37,6 @@ function CreateQuestionInput({ label, name, textarea, handleChange }: Props) {
             sx={{ margin: "0px 0 20px 0", width: "500px", minHeight: "50px" }}
             minRows={2}
             multiline
-            onChange={handleChange}
             name={name}
           />
         </>

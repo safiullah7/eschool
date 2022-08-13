@@ -1,20 +1,10 @@
-import { Button, Typography } from "@mui/material";
+import { Button, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import CreateQuestion from "../Questions/CreateQuestions/CreateQuestion";
-import CreateTextArea from "./CreateTextArea";
 
-interface Props {
-  testData: any;
-  setTestData: any;
-  index: any;
-}
-
-function Section({ testData, setTestData, index }: Props) {
+function Section() {
   const [create, setCreate] = useState(true);
-  const handleChange = (e: any) => {
-    setTestData({ ...testData, [e.target.name]: e.target.value });
-  };
 
   return (
     <Box
@@ -32,18 +22,27 @@ function Section({ testData, setTestData, index }: Props) {
             padding: "50px 0px ",
           }}
         >
-          <CreateTextArea
-            label="Enter Section Name"
-            textarea={false}
-            handleChange={handleChange}
-            name={`sectionName${index}`}
-          />
-          <CreateTextArea
-            label="Enter Section Description"
-            textarea={true}
-            handleChange={handleChange}
-            name={`sectionDesc${index}`}
-          />
+          <div style={{ marginBottom: "30px" }}>
+            <InputLabel sx={{ fontSize: "15px" }}>
+              Enter Section Name
+            </InputLabel>
+            <OutlinedInput
+              size="small"
+              sx={{ width: "100%" }}
+              name="sectionName"
+            />
+            <InputLabel sx={{ fontSize: "15px" }}>
+              Enter Section Description
+            </InputLabel>
+            <OutlinedInput
+              size="small"
+              sx={{ width: "100%", minHeight: "100px" }}
+              rows={5}
+              multiline
+              name="sectionDesc"
+              value=""
+            />
+          </div>
           <Button variant="contained" onClick={() => setCreate(!create)}>
             Create
           </Button>
@@ -51,14 +50,12 @@ function Section({ testData, setTestData, index }: Props) {
       ) : (
         <Box sx={{ padding: "30px 0px" }}>
           <Typography variant="h6" sx={{ fontSize: "15px", margin: "0" }}>
-            Section Name:{" "}
-            <span style={{ fontWeight: "bold" }}>{testData.sectionName}</span>
+            Section Name: <span style={{ fontWeight: "bold" }}></span>
           </Typography>
           <Typography variant="h6" sx={{ fontSize: "15px" }}>
-            Section Description:{" "}
-            <span style={{ fontWeight: "bold" }}>{testData.sectionDesc1}</span>
+            Section Description: <span style={{ fontWeight: "bold" }}></span>
           </Typography>
-          <CreateQuestion handleChange={handleChange} />
+          <CreateQuestion />
           <Box>
             <Typography
               variant="h6"

@@ -26,18 +26,13 @@ const style = {
   p: 4,
 };
 
-interface Props {
-  handleChange: any;
-}
-
-function CreateQuestion({ handleChange }: Props) {
+function CreateQuestion() {
   const [type, setType] = useState();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   const handleSelectChange = (e: any) => {
     setType(e.target.value);
-    // setTest({ ...test, [e.target.name]: e.target.value });
   };
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -70,23 +65,13 @@ function CreateQuestion({ handleChange }: Props) {
           </Select>
           <Box sx={{ maxWidth: "300px" }}>
             <form style={{ display: "flex", flexDirection: "column" }}>
-              {type === "textinput" && (
-                <TextQuestion handleChange={handleChange} />
-              )}
-              {type === "singleselect" && (
-                <QuestionTypes
-                  type="singleselect"
-                  handleChange={handleChange}
-                />
-              )}
-              {type === "multiselect" && (
-                <QuestionTypes type="multiselect" handleChange={handleChange} />
-              )}
+              {type === "textinput" && <TextQuestion />}
+              {type === "singleselect" && <QuestionTypes type="singleselect" />}
+              {type === "multiselect" && <QuestionTypes type="multiselect" />}
               {type && (
                 <Button
                   style={{ marginTop: "10px" }}
                   variant="contained"
-                  type="submit"
                   onClick={(e: any) => {
                     handleOpen();
                     handleClick(e);
