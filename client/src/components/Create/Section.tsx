@@ -1,5 +1,4 @@
-import { Button, InputLabel, OutlinedInput, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Button, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { useState } from "react";
 import CreateQuestion from "../Questions/CreateQuestions/CreateQuestion";
 
@@ -22,7 +21,7 @@ function Section() {
             padding: "50px 0px ",
           }}
         >
-          <div style={{ marginBottom: "30px" }}>
+          <Box sx={{ marginBottom: "30px" }}>
             <InputLabel sx={{ fontSize: "15px" }}>
               Enter Section Name
             </InputLabel>
@@ -42,7 +41,7 @@ function Section() {
               name="sectionDesc"
               value=""
             />
-          </div>
+          </Box>
           <Button variant="contained" onClick={() => setCreate(!create)}>
             Create
           </Button>

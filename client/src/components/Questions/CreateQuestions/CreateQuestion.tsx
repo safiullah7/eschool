@@ -39,7 +39,7 @@ function CreateQuestion() {
   };
 
   return (
-    <div style={{ margin: "40px 0 0 0" }}>
+    <Box sx={{ margin: "40px 0 0 0" }}>
       <Button onClick={handleOpen} variant="contained" size="small">
         Create Your Question
       </Button>
@@ -84,7 +84,7 @@ function CreateQuestion() {
           </Box>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }
 

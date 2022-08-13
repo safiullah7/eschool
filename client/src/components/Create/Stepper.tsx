@@ -53,9 +53,9 @@ export default function CreateStepper() {
       ) : (
         <React.Fragment>
           <form>
-            <div>{activeStep === 0 && <TestName />}</div>
-            <div>{activeStep === 1 && <SecondStep />}</div>
-            <div>{activeStep === 2 && <Preview />}</div>
+            <Box>{activeStep === 0 && <TestName />}</Box>
+            <Box>{activeStep === 1 && <SecondStep />}</Box>
+            <Box>{activeStep === 2 && <Preview />}</Box>
             <Box
               sx={{
                 display: "flex",

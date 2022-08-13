@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel, OutlinedInput } from "@mui/material";
+import { Box, InputLabel, OutlinedInput } from "@mui/material";
 
 interface Props {
   label: string;
@@ -9,7 +9,7 @@ interface Props {
 
 function CreateTextArea({ label, textarea, name }: Props) {
   return (
-    <div style={{ marginBottom: "30px" }}>
+    <Box sx={{ marginBottom: "30px" }}>
       <InputLabel sx={{ fontSize: "15px" }}>{label}</InputLabel>
       {textarea ? (
         <OutlinedInput
@@ -22,7 +22,7 @@ function CreateTextArea({ label, textarea, name }: Props) {
       ) : (
         <OutlinedInput size="small" sx={{ width: "100%" }} name={name} />
       )}
-    </div>
+    </Box>
   );
 }
 

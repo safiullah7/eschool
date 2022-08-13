@@ -20,7 +20,7 @@ function QuestionTypes({ type }: Props) {
       />
 
       {[...Array(option)].map((item, index) => (
-        <div key={index} style={{ marginBottom: "20px" }}>
+        <Box key={index} sx={{ marginBottom: "20px" }}>
           <Typography
             variant="body2"
             sx={{
@@ -33,7 +33,7 @@ function QuestionTypes({ type }: Props) {
             }}
           >{`${index + 1}th Option `}</Typography>
           <Options index={index + 1} />
-        </div>
+        </Box>
       ))}
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Button onClick={() => setOption(option + 1)} sx={{ width: "60px" }}>

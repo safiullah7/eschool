@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LanguageToggler from "../Localization/LanguageToggler";
 import "../../styles/Navbar.css";
 import DarkMode from "../DarkMode/DarkMode";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 interface Props {
   darkMode: any;
@@ -12,12 +12,12 @@ interface Props {
 
 function Navbar({ darkMode, setDarkMode }: Props) {
   return (
-    <div className="navbar">
-      <div className="container">
-        <div className="nav">
-          <div className="nav__logo">
+    <Box className="navbar">
+      <Box className="container">
+        <Box className="nav">
+          <Box className="nav__logo">
             <Link to="/">QuizWebApp</Link>
-          </div>
+          </Box>
           <ul className="nav__list">
             <li>
               <Link to="/">Home</Link>
@@ -32,21 +32,21 @@ function Navbar({ darkMode, setDarkMode }: Props) {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
-          <div className="nav__items">
+          <Box className="nav__items">
             <Button variant="outlined" size="small">
               <Link to="create">Create Question</Link>
             </Button>
             <Button sx={{ margin: "0 10px" }} variant="contained" size="small">
               <Link to="login">Login</Link>
             </Button>
-            <div className="nav__items--lan">
+            <Box className="nav__items--lan">
               <LanguageToggler />
-            </div>
+            </Box>
             <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

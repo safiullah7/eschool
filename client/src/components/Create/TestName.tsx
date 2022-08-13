@@ -1,9 +1,10 @@
+import { Box } from "@mui/material";
 import React from "react";
 import CreateTextArea from "./CreateTextArea";
 
 function TestName() {
   return (
-    <div>
+    <Box>
       <form
         action=""
         style={{
@@ -21,7 +22,7 @@ function TestName() {
           name="desc"
         />
       </form>
-    </div>
+    </Box>
   );
 }
 

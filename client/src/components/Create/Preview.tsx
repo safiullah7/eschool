@@ -1,13 +1,11 @@
 import React from "react";
-import { dummyData } from "../Questions/dummy";
-import MultipleSelectItem from "../Questions/ListQuestion/ListQuestionTypes/MultipleSelectItem";
-import SingleSelectItem from "../Questions/ListQuestion/ListQuestionTypes/SingleSelectItem";
-import TextInputItem from "../Questions/ListQuestion/ListQuestionTypes/TextInputItem";
+import { Box } from "@mui/material";
+
 
 function Preview() {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         margin: "10px 30px",
         marginLeft: "40px",
         padding: "20px 0 40px 0",
@@ -49,7 +47,7 @@ function Preview() {
           </div>
         </div>
       </div> */}
-    </div>
+    </Box>
   );
 }
 

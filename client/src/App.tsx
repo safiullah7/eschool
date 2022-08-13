@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import { Box } from "@mui/material";
 
 function App() {
   const { t } = useTranslation(["Common"]);
@@ -29,7 +30,7 @@ function App() {
   });
 
   return (
-    <div className="App" dir={t("positionElements")}>
+    <Box className="App" dir={t("positionElements")}>
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={darkTheme}>
           <Suspense fallback={<h1>Loading profile...</h1>}>
@@ -38,7 +39,7 @@ function App() {
           </Suspense>
         </ThemeProvider>
       </CacheProvider>
-    </div>
+    </Box>
   );
 }
 

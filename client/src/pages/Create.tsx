@@ -1,10 +1,11 @@
+import { Box } from "@mui/material";
 import CreateStepper from "../components/Create/Stepper";
 
 function Create() {
   return (
-    <div className="container">
+    <Box className="container">
       <CreateStepper />
-    </div>
+    </Box>
   );
 }
 

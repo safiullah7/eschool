@@ -1,4 +1,5 @@
 import {
+  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -17,7 +18,7 @@ interface SelectItems {
 
 function MultipleSelectItem({ questionText, a, b, c }: SelectItems) {
   return (
-    <div>
+    <Box>
       <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">{questionText}</FormLabel>
         <FormGroup>
@@ -27,7 +28,7 @@ function MultipleSelectItem({ questionText, a, b, c }: SelectItems) {
         </FormGroup>
         <OutlinedInput placeholder="Please enter answer" size="small" />
       </FormControl>
-    </div>
+    </Box>
   );
 }
 

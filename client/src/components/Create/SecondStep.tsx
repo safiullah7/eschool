@@ -1,4 +1,4 @@
-import { Button, Paper } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import React, { useState } from "react";
 import Section from "./Section";
 
@@ -6,9 +6,9 @@ function SecondStep() {
   const [addSection, setAddSection] = useState(1);
 
   return (
-    <div>
-      <div
-        style={{
+    <Box>
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "end",
           margin: "50px 0 50px 0",
@@ -20,8 +20,8 @@ function SecondStep() {
         >
           Add a Section
         </Button>
-      </div>
-      <div>
+      </Box>
+      <Box>
         {[...Array(addSection)].map((item, index) => (
           <Paper
             elevation={12}
@@ -34,8 +34,8 @@ function SecondStep() {
             <Section />
           </Paper>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
