@@ -22,6 +22,12 @@ export default function CreateStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
+  const [data, setData] = useState({
+    name: "",
+    desc: "",
+    sections: [],
+  });
+  console.log(data);
 
   return (
     <Box sx={{ width: "100%", padding: "50px 0" }}>
@@ -53,9 +59,13 @@ export default function CreateStepper() {
       ) : (
         <React.Fragment>
           <form>
-            <Box>{activeStep === 0 && <TestName />}</Box>
-            <Box>{activeStep === 1 && <SecondStep />}</Box>
-            <Box>{activeStep === 2 && <Preview />}</Box>
+            <Box>
+              {activeStep === 0 && <TestName data={data} setData={setData} />}
+            </Box>
+            <Box>
+              {activeStep === 1 && <SecondStep data={data} setData={setData} />}
+            </Box>
+            <Box>{activeStep === 2 && <Preview data={data} />}</Box>
             <Box
               sx={{
                 display: "flex",
