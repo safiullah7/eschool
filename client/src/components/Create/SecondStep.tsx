@@ -2,8 +2,24 @@ import { Box, Button, Paper } from "@mui/material";
 import React, { useState } from "react";
 import Section from "./Section";
 
-function SecondStep() {
+interface Props {
+  data: any;
+  setData: (data: any) => void;
+}
+
+function SecondStep({ data, setData }: Props) {
   const [addSection, setAddSection] = useState(1);
+  const [newSection, setNewSection] = useState({
+    sectionName: "",
+    sectionDesc: "",
+    questions: [],
+  });
+
+  const handleClick = () => {
+    setData({ ...data, sections: [...data.sections, newSection] });
+    setAddSection(addSection + 1);
+    setNewSection({ sectionName: "", sectionDesc: "", questions: [] });
+  };
 
   return (
     <Box>
@@ -14,10 +30,7 @@ function SecondStep() {
           margin: "50px 0 50px 0",
         }}
       >
-        <Button
-          onClick={() => setAddSection(addSection + 1)}
-          variant="contained"
-        >
+        <Button onClick={handleClick} variant="contained">
           Add a Section
         </Button>
       </Box>
@@ -31,7 +44,12 @@ function SecondStep() {
               width: "60%",
             }}
           >
-            <Section />
+            <Section
+              newSection={newSection}
+              setNewSection={setNewSection}
+              data={data}
+              index={index}
+            />
           </Paper>
         ))}
       </Box>
