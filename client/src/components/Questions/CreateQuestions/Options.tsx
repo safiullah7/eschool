@@ -1,26 +1,61 @@
-import { Box, Button, InputLabel } from "@mui/material";
+import { Box, Button, InputLabel, OutlinedInput } from "@mui/material";
 import React, { useState } from "react";
-import CreateQuestionInput from "./CreateQuestionInput";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 interface Props {
-  index: any;
+  options: any;
+  setOptions: (options: any) => void;
 }
-function Options({ index }: Props) {
+
+function Options({ options, setOptions }: Props) {
   const [selectedFile, setSelectedFile] = useState(false);
 
   return (
     <Box>
-      <CreateQuestionInput
-        label="Enter main text"
-        name={`optionText${index}`}
-        textarea={false}
-      />
-      <CreateQuestionInput
-        label="Enter description (optional)"
-        name={`optionDescription${index}`}
-        textarea={false}
-      />
+      <>
+        <InputLabel sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}>
+          Enter option text
+        </InputLabel>
+        <OutlinedInput
+          size="small"
+          sx={{
+            margin: "0px 0 5px 0",
+            width: "500px",
+            minHeight: "30px",
+          }}
+          minRows={1}
+          multiline
+          name="optionText"
+          onChange={(event) =>
+            setOptions({
+              ...options,
+              optionText: event.target.value,
+            })
+          }
+        />
+      </>
+      <>
+        <InputLabel sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}>
+          Enter option desctiption (optional)
+        </InputLabel>
+        <OutlinedInput
+          size="small"
+          sx={{
+            margin: "0px 0 5px 0",
+            width: "500px",
+            minHeight: "30px",
+          }}
+          minRows={1}
+          multiline
+          name="optionDesc"
+          onChange={(event) =>
+            setOptions({
+              ...options,
+              optionDesc: event.target.value,
+            })
+          }
+        />
+      </>
       <InputLabel sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}>
         Enter image (optional)
       </InputLabel>
@@ -31,8 +66,14 @@ function Options({ index }: Props) {
             hidden
             accept="image/*"
             type="file"
-            name={`optionImage${index}`}
-            onClick={() => setSelectedFile(true)}
+            name="optionImg"
+            onChange={(event) => {
+              setOptions({
+                ...options,
+                optionImg: event.target.value,
+              });
+              setSelectedFile(true);
+            }}
           />
         </Button>
         {selectedFile === true && (

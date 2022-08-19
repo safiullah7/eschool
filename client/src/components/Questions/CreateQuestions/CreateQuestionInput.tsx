@@ -1,13 +1,14 @@
-import { InputLabel, OutlinedInput } from "@mui/material";
 import React from "react";
+import { InputLabel, OutlinedInput } from "@mui/material";
 
 interface Props {
   label: string;
   name: string;
   textarea: boolean;
+  handleChange: any;
 }
 
-function CreateQuestionInput({ label, name, textarea }: Props) {
+function CreateQuestionInput({ label, name, textarea, handleChange }: Props) {
   return (
     <>
       {!textarea ? (
@@ -25,6 +26,7 @@ function CreateQuestionInput({ label, name, textarea }: Props) {
             minRows={1}
             multiline
             name={name}
+            onChange={handleChange}
           />
         </>
       ) : (
@@ -38,6 +40,7 @@ function CreateQuestionInput({ label, name, textarea }: Props) {
             minRows={2}
             multiline
             name={name}
+            onChange={handleChange}
           />
         </>
       )}

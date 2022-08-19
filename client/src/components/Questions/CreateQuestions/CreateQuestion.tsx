@@ -1,14 +1,16 @@
 import {
   Box,
   Button,
+  InputLabel,
   MenuItem,
   Modal,
+  OutlinedInput,
   Select,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import Answer from "./Answer";
 import QuestionTypes from "./QuestionTypes";
-import TextQuestion from "./TextQuestion";
 
 const style = {
   position: "absolute" as "absolute",
@@ -26,16 +28,44 @@ const style = {
   p: 4,
 };
 
-function CreateQuestion() {
-  const [type, setType] = useState();
+interface Props {
+  newSection: any;
+  setNewSection: (data: any) => void;
+}
+
+function CreateQuestion({ newSection, setNewSection }: Props) {
+  const [type, setType] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
-  const handleSelectChange = (e: any) => {
-    setType(e.target.value);
-  };
+  const [question, setQuestion] = useState({
+    questionType: "",
+    questionText: "",
+    options: [],
+    answer: "",
+  });
+
   const handleClick = (e: any) => {
     e.preventDefault();
+
+    setNewSection({
+      ...newSection,
+      questions: [...newSection.questions, question],
+    });
+    setQuestion({
+      questionType: "",
+      questionText: "",
+      options: [],
+      answer: "",
+    });
+  };
+
+  const handleChange = (e: any) => {
+    setType(e.target.value);
+    setQuestion({
+      ...question,
+      questionType: e.target.value,
+    });
   };
 
   return (
@@ -53,7 +83,7 @@ function CreateQuestion() {
           <Typography variant="h6">Choose type of question</Typography>
           <Select
             value={type}
-            onChange={handleSelectChange}
+            onChange={handleChange}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
             sx={{ margin: "10px 0", minWidth: 500, height: "40px" }}
@@ -65,9 +95,45 @@ function CreateQuestion() {
           </Select>
           <Box sx={{ maxWidth: "300px" }}>
             <form style={{ display: "flex", flexDirection: "column" }}>
-              {type === "textinput" && <TextQuestion />}
-              {type === "singleselect" && <QuestionTypes type="singleselect" />}
-              {type === "multiselect" && <QuestionTypes type="multiselect" />}
+              {type && (
+                <>
+                  <InputLabel
+                    sx={{ fontSize: "14px", margin: "0px 0 1px 5px" }}
+                  >
+                    Enter your question text
+                  </InputLabel>
+                  <OutlinedInput
+                    size="small"
+                    sx={{
+                      margin: "0px 0 20px 0",
+                      width: "500px",
+                      minHeight: "50px",
+                    }}
+                    minRows={2}
+                    multiline
+                    name="questionText"
+                    onChange={(event) =>
+                      setQuestion({
+                        ...question,
+                        questionText: event.target.value,
+                      })
+                    }
+                  />
+                </>
+              )}
+              {["singleselect", "multiselect"].includes(type) && (
+                <>
+                  <QuestionTypes
+                    question={question}
+                    setQuestion={setQuestion}
+                  />
+                  <Answer
+                    type={type}
+                    question={question}
+                    setQuestion={setQuestion}
+                  />
+                </>
+              )}
               {type && (
                 <Button
                   style={{ marginTop: "10px" }}

@@ -1,25 +1,34 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
-import CreateQuestionInput from "./CreateQuestionInput";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import Options from "./Options";
 
 interface Props {
-  type: any;
+  question: any;
+  setQuestion: any;
 }
-function QuestionTypes({ type }: Props) {
-  const [option, setOption] = useState(1);
+
+function QuestionTypes({ question, setQuestion }: Props) {
+  const [numOption, setNumOption] = useState(1);
+  const [options, setOptions] = useState({
+    optionText: "",
+    optionDesc: "",
+    optionImg: "",
+  });
+
+  const handleClick = () => {
+    setQuestion({
+      ...question,
+      options: [...question.options, options],
+    });
+
+    setOptions({ optionText: "", optionDesc: "", optionImg: "" });
+  };
 
   return (
     <Box>
-      <CreateQuestionInput
-        label="Enter Question"
-        name="questionText"
-        textarea={true}
-      />
-
-      {[...Array(option)].map((item, index) => (
+      {[...Array(numOption)].map((item, index) => (
         <Box key={index} sx={{ marginBottom: "20px" }}>
           <Typography
             variant="body2"
@@ -32,28 +41,33 @@ function QuestionTypes({ type }: Props) {
               fontWeight: "600",
             }}
           >{`${index + 1}th Option `}</Typography>
-          <Options index={index + 1} />
+          <Options options={options} setOptions={setOptions} />
         </Box>
       ))}
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Button onClick={() => setOption(option + 1)} sx={{ width: "60px" }}>
-          <AddCircleOutlineIcon sx={{ color: "#2196f3" }} />
-          <Typography
-            sx={{
-              color: "#2196f3",
-              marginLeft: "2px",
-              fontSize: "11px",
-              width: "100%",
-            }}
+        <Box onClick={handleClick}>
+          <Button
+            onClick={() => setNumOption(numOption + 1)}
+            sx={{ width: "60px" }}
           >
-            Add
-          </Typography>
-        </Button>
+            <AddCircleOutlineIcon sx={{ color: "#2196f3" }} />
+            <Typography
+              sx={{
+                color: "#2196f3",
+                marginLeft: "2px",
+                fontSize: "11px",
+                width: "100%",
+              }}
+            >
+              Add
+            </Typography>
+          </Button>
+        </Box>
         <Button
           onClick={() => {
-            setOption(option - 1);
+            setNumOption(numOption - 1);
           }}
-          disabled={option === 0}
+          disabled={numOption === 0}
           sx={{ width: "80px", marginLeft: "10px" }}
         >
           <RemoveCircleOutlineIcon sx={{ color: "red" }} />
@@ -63,26 +77,6 @@ function QuestionTypes({ type }: Props) {
             Remove
           </Typography>
         </Button>
-      </Box>
-      <Box sx={{ margin: "10px 0 20px 0" }}>
-        <CreateQuestionInput
-          label="Enter Correct Answer"
-          name="answer"
-          textarea={false}
-        />
-        <Typography
-          variant="body2"
-          sx={{
-            fontSize: "12px",
-            margin: "-4px 0 0 5px",
-            width: "400px",
-            opacity: "0.7",
-          }}
-        >
-          {type === "singleselect"
-            ? "Enter correct option with a number (e.x: 2)"
-            : "Enter correct options with numbers between commas (e.x: 1,3)"}
-        </Typography>
       </Box>
     </Box>
   );
