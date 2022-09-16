@@ -10,21 +10,22 @@ import {
 import React from "react";
 
 interface SelectItems {
-  questionText: string;
-  a: string;
-  b: string;
-  c: string;
+  single: any;
 }
 
-function MultipleSelectItem({ questionText, a, b, c }: SelectItems) {
+function MultipleSelectItem({ single }: SelectItems) {
   return (
     <Box>
       <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">{questionText}</FormLabel>
+        <FormLabel component="legend">{single?.questionText}</FormLabel>
         <FormGroup>
-          <FormControlLabel control={<Checkbox name="gilad" />} label={a} />
-          <FormControlLabel control={<Checkbox name="gilad" />} label={b} />
-          <FormControlLabel control={<Checkbox name="gilad" />} label={c} />
+          {single?.options?.map((item: any, index: number) => (
+            <FormControlLabel
+              key={index}
+              control={<Checkbox name="gilad" />}
+              label={item?.optionText}
+            />
+          ))}
         </FormGroup>
         <OutlinedInput placeholder="Please enter answer" size="small" />
       </FormControl>

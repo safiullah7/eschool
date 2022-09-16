@@ -1,33 +1,32 @@
 import React from "react";
 import {
-  FormControlLabel,
   FormLabel,
-  Radio,
   RadioGroup,
   FormControl,
   OutlinedInput,
+  Box,
 } from "@mui/material";
+import RadioButton from "./RadioButton";
 
 interface Props {
-  questionText: string;
-  a: string;
-  b: string;
-  c: string;
+  single: any;
 }
 
-function SingleSelectItem({ questionText, a, b, c }: Props) {
+function SingleSelectItem({ single }: Props) {
   return (
     <FormControl>
       <FormLabel id="demo-controlled-radio-buttons-group">
-        {questionText}
+        {single?.questionText}
       </FormLabel>
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
       >
-        <FormControlLabel value="female" control={<Radio />} label={a} />
-        <FormControlLabel value="male" control={<Radio />} label={b} />
-        <FormControlLabel value="notprefer" control={<Radio />} label={c} />
+        {single?.options?.map((item: any, index: number) => (
+          <Box key={index}>
+            <RadioButton option={item?.optionText} />
+          </Box>
+        ))}
       </RadioGroup>
       <OutlinedInput placeholder="Please enter answer" size="small" />
     </FormControl>
